@@ -5,7 +5,7 @@ def solution(participant, completion):
     answer = collections.Counter(participant) - collections.Counter(completion)
     return list(answer.keys())[0]
 
-# collections.Conter idx, data로 분류
+# collections.Conter {data, data 갯수}로 분류
 
 
 # def solution(participant, completion):
