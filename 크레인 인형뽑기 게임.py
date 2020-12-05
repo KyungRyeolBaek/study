@@ -1,3 +1,35 @@
+def solution(board, moves):
+    # board =
+    # [[0,0,0,0,0],
+    #  [0,0,1,0,3],
+    #  [0,2,5,0,1],
+    #  [4,2,4,4,2],
+    #  [3,5,1,3,1]]
+    # moves =
+    # [1,5,3,5,1,2,1,4]
+    case = []
+    answer = 0
+    for i in moves:
+        for j in range(len(board)):
+            if board[j][i-1] == 0:
+                pass
+            else:
+                case.append(board[j][i-1])
+                board[j][i-1] = 0
+                if len(case) >= 2:
+                    if case[len(case)-2] == case[len(case)-1]:
+                        answer += 2
+                        print(case)
+                        del case[len(case)-2:len(case)]
+                        print(case)
+                        break
+                    else:
+                        pass
+                else:
+                    pass
+                break
+    return answer
+
 # 문제 설명
 # 게임개발자인 죠르디는 크레인 인형뽑기 기계를 모바일 게임으로 만들려고 합니다.
 # 죠르디는 게임의 재미를 높이기 위해 화면 구성과 규칙을 다음과 같이 게임 로직에 반영하려고 합니다.
@@ -32,35 +64,3 @@
 # 인형의 처음 상태는 문제에 주어진 예시와 같습니다. 크레인이 [1, 5, 3, 5, 1, 2, 1, 4] 번 위치에서 차례대로 인형을 집어서 바구니에 옮겨 담은 후, 상태는 아래 그림과 같으며 바구니에 담는 과정에서 터트려져 사라진 인형은 4개 입니다.
 
 # crane_game_104.jpg
-
-def solution(board, moves):
-    # board =
-    # [[0,0,0,0,0],
-    #  [0,0,1,0,3],
-    #  [0,2,5,0,1],
-    #  [4,2,4,4,2],
-    #  [3,5,1,3,1]]
-    # moves =
-    # [1,5,3,5,1,2,1,4]
-    case = []
-    answer = 0
-    for i in moves:
-        for j in range(len(board)):
-            if board[j][i-1] == 0:
-                pass
-            else:
-                case.append(board[j][i-1])
-                board[j][i-1] = 0
-                if len(case) >= 2:
-                    if case[len(case)-2] == case[len(case)-1]:
-                        answer += 2
-                        print(case)
-                        del case[len(case)-2:len(case)]
-                        print(case)
-                        break
-                    else:
-                        pass
-                else:
-                    pass
-                break
-    return answer
