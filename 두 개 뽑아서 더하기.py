@@ -1,5 +1,2 @@
 def solution(numbers):
-    answer = [a + b for a in sorted(numbers) for b in sorted(numbers)]
-    for a in [2*a for a in sorted(numbers)]:
-        answer.remove(a)
-    return list(set(answer))
+    return sorted(list(set([a + b for i, a in enumerate(numbers) for j, b in enumerate(numbers) if i != j])))
