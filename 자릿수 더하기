@@ -1,8 +1,0 @@
-def solution(n):
-    return sum([int(i) for i in str(n)])
-    
-# sum(list) 리스트 안의 값 모두 더하기
-# str(a), int(a) a를 문자열로, a를 정수로
-
-
-
