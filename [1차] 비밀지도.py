@@ -8,6 +8,7 @@ def solution(n, arr1, arr2):
 # ~a = not a
 # zip(a,b) : a랑 b를 묶음
 # a.replace(i,j) : a의 모든 i를 j로 대체
+# a.rjust(i, j) : a의 i만큼 빈자리를 j로 채워준다.
 
 
 
