@@ -12,8 +12,9 @@ def solution(N, stages):
         stage_total = stage_total + stage_fail
         if stage_total == 0:
             total_failture_rate[i+1] = 0
-        failture_rate = stage_fail / stage_total
-        total_failture_rate[i+1] = failture_rate
+        else:
+            failture_rate = stage_fail / stage_total
+            total_failture_rate[i+1] = failture_rate
     return [i[0] for i in sorted(total_failture_rate.items(), key = lambda item:item[1], reverse = True)]
 
 # a = {} : dic 형태로 저장
