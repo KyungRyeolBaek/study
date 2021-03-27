@@ -55,6 +55,8 @@ def solution(new_id):
     st = st if len(st) > 2 else st + "".join([st[-1] for i in range(3-len(st))])
     return st
 
+# 실행시간이 더 길어짐.
+
 # re.sub('패턴', '바꿀 문자열', '문자열', 바꿀횟수)
 
 # 특수 기호	의미	예
@@ -76,6 +78,9 @@ def solution(new_id):
 
 # https://python.bakyeono.net/chapter-11-2.html
 # 출처.
+
+# a||b : a 가 참이면 뒤에것 실행 안함
+# a|b : a 가 참이어도 b 까지 실행함
 
 
 # 문제 설명
