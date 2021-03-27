@@ -29,6 +29,27 @@ def solution(orders, course):
 # itertools.combinations('abc', b) : 'a' 를 b만큼씩 분할 ex) ('abc',2) = ab, ac, bc
 
 # dict 사용하여 counting
+# http://www.flowdas.com/thinkpython/11-dictionaries/
+
+# 추가 풀이
+import collections
+import itertools
+
+def solution(orders, course):
+    result = []
+
+    for course_size in course:
+        order_combinations = []
+        for order in orders:
+            order_combinations += itertools.combinations(sorted(order), course_size)
+
+        most_ordered = collections.Counter(order_combinations).most_common()
+        result += [ k for k, v in most_ordered if v > 1 and v == most_ordered[0][1] ]
+
+    return [ ''.join(v) for v in sorted(result) ]
+
+# collections.Counter.most_common() # [('l', 3), ('o', 2), ('h', 1), ('e', 1), (' ', 1), ('w', 1), ('r', 1), ('d', 1)]
+# https://www.daleseo.com/python-collections-counter/
 
 
 # 메뉴 리뉴얼
