@@ -80,7 +80,6 @@ while True:
             for k in np.arange(0.1, 1.0, 0.1):
                 ror = get_ror(k)
                 highk.append([ror, k])
-            print(max(highk)[1])
             time.sleep(1)
             target_price = get_target_price(coin_name, max(highk)[1])
             ma15 = get_ma15(coin_name)

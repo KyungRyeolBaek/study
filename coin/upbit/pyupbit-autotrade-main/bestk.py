@@ -19,14 +19,16 @@ def get_ror(coin_name, k=0.5):
     return ror
 
 
-hi_k = []
-for i in tickers:
-    highk = []
-    for k in np.arange(0.1, 1.0, 0.1):
-        ror = get_ror(i, k)
-        # print(i+" %.1f %f" % (k, ror))
-        highk.append([ror, k])
-    # print(i[4:] + ' ' + str(max(highk)[1]))
-    hi_k.append([max(highk), i[4:]])
-    time.sleep(0.7)
-print(max(hi_k))
+# hi_k = []
+# for i in tickers:
+i = "KRW-EMC2"
+highk = []
+for k in np.arange(0.1, 1.0, 0.1):
+    ror = get_ror(i, k)
+    # print(i+" %.1f %f" % (k, ror))
+    highk.append([ror, k])
+# print(i[4:] + ' ' + str(max(highk)[1]))
+# hi_k.append([max(highk), i[4:]])
+time.sleep(0.7)
+# print(max(hi_k))
+print(max(highk))
