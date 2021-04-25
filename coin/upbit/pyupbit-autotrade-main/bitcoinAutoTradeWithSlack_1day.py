@@ -2,10 +2,27 @@ import time
 import pyupbit
 import datetime
 import requests
+import numpy as np
 
 access = "naahaVSh29BJPu3pfBZPEWSyjsGwytkYiexmAuHR"
 secret = "e0fJfTu1BjPnn35Qc2pAOheSn7xCOXIMxG0Dzluj"
-myToken = "xoxb-your-token"
+myToken = "xoxb-1995417427669-2004663172180-7lt6OQoJLd2U5hbnMg8pirL9"
+slack_channel = "#trade"
+coin = "EMC2"
+coin_name = "KRW-"+ coin
+
+def get_ror(k=0.5):
+    fee = 0.05
+    df = pyupbit.get_ohlcv(coin_name, count=7)
+    df['range'] = (df['high'] - df['low']) * k
+    df['target'] = df['open'] + df['range'].shift(1)
+
+    df['ror'] = np.where(df['high'] > df['target'],
+                         df['close'] / df['target'] - fee,
+                         1)
+
+    ror = df['ror'].cumprod()[-2]
+    return ror
 
 def post_message(token, channel, text):
     """슬랙 메시지 전송"""
@@ -48,33 +65,39 @@ def get_current_price(ticker):
 
 # 로그인
 upbit = pyupbit.Upbit(access, secret)
-print("autotrade start")
+print(coin +" autotrade start")
 # 시작 메세지 슬랙 전송
-post_message(myToken,"#crypto", "autotrade start")
+post_message(myToken, slack_channel, coin + " autotrade start")
 
 while True:
     try:
         now = datetime.datetime.now()
-        start_time = get_start_time("KRW-BTC")
+        start_time = get_start_time(coin_name)
         end_time = start_time + datetime.timedelta(days=1)
         print(now)
-
         if start_time < now < end_time - datetime.timedelta(seconds=10):
-            target_price = get_target_price("KRW-BTC", 0.5)
-            ma15 = get_ma15("KRW-BTC")
-            current_price = get_current_price("KRW-BTC")
+            highk = []
+            for k in np.arange(0.1, 1.0, 0.1):
+                ror = get_ror(k)
+                highk.append([ror, k])
+            print(max(highk)[1])
+            time.sleep(1)
+            target_price = get_target_price(coin_name, max(highk)[1])
+            ma15 = get_ma15(coin_name)
+            current_price = get_current_price(coin_name)
             if target_price < current_price and ma15 < current_price:
                 krw = get_balance("KRW")
                 if krw > 5000:
-                    buy_result = upbit.buy_market_order("KRW-BTC", krw*0.9995)
-                    post_message(myToken,"#crypto", "BTC buy : " +str(buy_result))
+                    buy_result = upbit.buy_market_order(coin_name, krw*0.9995)
+                    post_message(myToken, slack_channel, coin+" buy : " +str(buy_result))
+
         else:
-            btc = get_balance("BTC")
+            btc = get_balance(coin)
             if btc > 0.00008:
-                sell_result = upbit.sell_market_order("KRW-BTC", btc*0.9995)
-                post_message(myToken,"#crypto", "BTC buy : " +str(sell_result))
+                sell_result = upbit.sell_market_order(coin_name, btc*0.9995)
+                post_message(myToken, slack_channel, coin+" sell : " +str(sell_result))
         time.sleep(1)
     except Exception as e:
         print(e)
-        post_message(myToken,"#crypto", e)
+        post_message(myToken, slack_channel, e)
         time.sleep(1)
