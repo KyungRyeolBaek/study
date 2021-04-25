@@ -6,7 +6,7 @@ import numpy as np
 
 access = "naahaVSh29BJPu3pfBZPEWSyjsGwytkYiexmAuHR"
 secret = "e0fJfTu1BjPnn35Qc2pAOheSn7xCOXIMxG0Dzluj"
-myToken = "xoxb-1995417427669-2004663172180-uc42mCLSDLoYUsfSJk2zOBYD"
+myToken = "xoxb-1995417427669-2004663172180-Oj2xZsGX3U6tKQqc03fb0U7h"
 
 slack_channel = "#trade"
 coin = "EMC2"
