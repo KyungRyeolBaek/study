@@ -83,8 +83,10 @@ while True:
                 highk.append([ror, k])
             time.sleep(1)
             target_price = get_target_price(coin_name, max(highk)[1])
+            print(target_price)
             ma15 = get_ma15(coin_name)
             current_price = get_current_price(coin_name)
+            print(ma15)
             if target_price < current_price and ma15 < current_price:
                 krw = get_balance("KRW")
                 if krw > 5000:
