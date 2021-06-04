@@ -21,7 +21,7 @@ def main(config_path, experiment_path):
     training = True
 
     # load config
-    code_path = './'
+    code_path = '/'
     config, pretty_config = get_config(os.path.join(code_path, config_path))
     config['path']['experiment'] = os.path.join(experiment_path, config['path']['experiment'])
 

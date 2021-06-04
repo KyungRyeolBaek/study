@@ -22,7 +22,7 @@ def main(pred_path, config_path,
     from scripts.metrics import compute_metrics
 
     # load config
-    code_path = './'
+    code_path = '/'
     config, pretty_config = get_config(os.path.join(code_path, config_path))
 
     if images_path:
