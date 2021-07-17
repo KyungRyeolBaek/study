@@ -2,5 +2,11 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeStates/Section3/Section3_Sprint_Challenge/ds-sc-31" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeStates/Section3/sprint1/SpaceInvaders" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeStates/Section3/sprint1/ds-sa-docker" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeStates/Section3/sprint1/ds-sa-simple-git-flow" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeStates/Section3/sprint1/pacman-canvas" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeStates/Section3/sprint2/ds-sa-pyfriend" vcs="Git" />
   </component>
 </project>
