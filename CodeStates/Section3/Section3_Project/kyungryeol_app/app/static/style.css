@@ -1,0 +1,73 @@
+:root {
+    --offcanvas-width: 560px;
+    --topNavbarHeight: 56px;
+}
+.sidebar-nav {
+width: var(--offcanvas-width); */
+}
+.sidebar-link {
+    display: flex;
+    align-items: center;
+}
+.sidebar-link .right-icon {
+    display: inline-flex;
+    transition: all ease 0.25s;
+}
+.sidebar-link[aria-expened="true"] .right-icon {
+    transform: rotate(180deg);
+}
+
+/* .drag-area {
+    border: 2px dashed rgb(160, 136, 0);
+    height: 500px;
+    width: 700px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.drag-area .icon {
+    font-size: 100px;
+    color: rgb(160, 136, 0);
+}
+.drag-area header {
+    font-size: 30px;
+    font-weight: 500;
+    color: rgb(160, 136, 0);
+    margin: 10px 0 15px 0;
+}
+.drag-area button {
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    background: rgb(160, 136, 0);
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.drag-area.active {
+    border: 2px solid rgb(160, 136, 0);
+} */
+
+
+@media (min-width: 992px) {
+    body{
+        overflow: auto !important;
+    }
+    .offcanvas-backdrop::before{
+        display: none;
+    }
+    main{
+        margin-left: var(--offcanvas-width);
+    }
+    .sidebar-nav {
+        transform: none;
+        visibility: visible !important;
+        top: var(--topNavbarHeight);
+        height: calc(100% - var(--topNavbarHeight));
+    }
+}
+
