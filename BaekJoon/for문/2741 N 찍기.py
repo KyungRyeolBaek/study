@@ -1,6 +1,9 @@
 for i in range(int(input())):
     print('{}'.format(i+1))
 
+for i in range(int(input())):
+    print(-~i)
+
 # short -> unpacking 사용
 print(*range(1,int(input())+1))
 
