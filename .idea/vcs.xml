@@ -2,8 +2,12 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeStates/Section3/Section3_Project/building_user_login_system" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeStates/Section3/Section3_Project/flask-datta-able" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeStates/Section3/Section3_Project/kyungryeol_app" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/CodeStates/Section3/Section3_Sprint_Challenge/ds-sc-31" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/CodeStates/Section3/Section3_Sprint_Challenge/ds-sc-32" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeStates/Section3/Section3_Sprint_Challenge/ds-sc-33" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/CodeStates/Section3/sprint1/SpaceInvaders" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/CodeStates/Section3/sprint1/ds-sa-docker" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/CodeStates/Section3/sprint1/ds-sa-simple-git-flow" vcs="Git" />
@@ -13,5 +17,11 @@
     <mapping directory="$PROJECT_DIR$/CodeStates/Section3/sprint3/ds-sa-api" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/CodeStates/Section3/sprint3/ds-sa-mini-flask" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/CodeStates/Section3/sprint3/ds-sa-simple-flask" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeStates/Section3/sprint3/ds-sa-twit-app" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeStates/Section4/ds-section4-sprint1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeStates/Section4/ds-section4-sprint2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeStates/Section4/ds-section4-sprint3" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeStates/Section5/ds-sa-pythonprogramming" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeStates/another_user_code/Sunki-Kim/AI_Bootcamp_Project" vcs="Git" />
   </component>
 </project>
