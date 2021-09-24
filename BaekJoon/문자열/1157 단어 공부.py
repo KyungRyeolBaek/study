@@ -3,13 +3,19 @@ C = set(S)
 res = {i : S.count(i) for i in C}
 sorted_res = sorted(res.items(), key=lambda x: x[1], reverse=True)
 
-if sorted_res[0][1] == sorted_res[1][1]:
-    print('?')
+if len(sorted_res) > 1:
+    if sorted_res[0][1] == sorted_res[1][1]:
+        print('?')
+    else:
+        print(sorted_res[0][0])
 else:
     print(sorted_res[0][0])
 
 # short
-
+from statistics import*
+try:t=mode(input().upper())
+except:t='?'
+print(t)
 
 '''
 문제
