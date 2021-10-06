@@ -9,7 +9,10 @@ else:
     print(sorted_res[0][0])
 
 # short
-
+from statistics import*
+try:t=mode(input().upper())
+except:t='?'
+print(t)
 
 '''
 문제
