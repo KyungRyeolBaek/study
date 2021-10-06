@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+=======
+# 아스키 코드 변환
+'''
+2 -> 3초 : ABC
+3 -> 4초 : DEF
+4 -> 5초 : GHI
+5 -> 6초 : JKL
+6 -> 7초 : MNO
+7 -> 8초 : PQRS
+8 -> 9초 : TUV
+9 -> 10초 : WXYZ
+'''
+>>>>>>> 97627549dd2e598cdf36d1ea682d5e6fbc3ade2c
 string = input()
 res = 0
 for s in string:
