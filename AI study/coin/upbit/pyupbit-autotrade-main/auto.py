@@ -63,10 +63,10 @@ while True:
     current_price = pyupbit.get_current_price(item)
     time.sleep(0.03)
     margin = (current_price - coin_dic[item]) / current_price
-    if margin > 0.01:
+    if margin > 0.00:
       coin_dic[item] = current_price
       buy_list.append(item)
-    elif margin < -0.01:
+    elif margin < -0.00:
       # 코인 판매.
       current_moeny = upbit.get_balance('KRW')
       coin = upbit.get_balance(item)

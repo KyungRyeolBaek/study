@@ -34,7 +34,7 @@ upbit = pyupbit.Upbit(access, secret)
 tickers = pyupbit.get_tickers('KRW')
 
 # 모델 학습 함수
-def model_train(train_size = 100, interval_time = 'minute60', data_limit = 3000):
+def model_train(train_size = 10, interval_time = 'minute60', data_limit = 300):
   tickers_count = 0
 
   for item in tickers:
@@ -73,7 +73,7 @@ def model_train(train_size = 100, interval_time = 'minute60', data_limit = 3000)
     
   
 # 구매할 코인 리스트 작성 함수
-def buy_coin_list(train_size = 100, interval_time = 'minute60', data_limit = 100):
+def buy_coin_list(train_size = 10, interval_time = 'minute60', data_limit = 10):
   percent_list = dict()
   tickers_count = 0
 
@@ -90,7 +90,7 @@ def buy_coin_list(train_size = 100, interval_time = 'minute60', data_limit = 100
 
   buy_list = []
   for l in tmp:
-    if 0 > l[1] > -0.7:
+    if 100 > l[1] > 0.01:
       # print(l)
       buy_list.append(l)
 
@@ -111,7 +111,7 @@ while True:
   try:
     model_train()
     print(earning_rate)
-    time.sleep(3601 - datetime.datetime.now().minute * 60 - datetime.datetime.now().second)
+    # time.sleep(3601 - datetime.datetime.now().minute * 60 - datetime.datetime.now().second)
 
     # 코인 판매.
     for item in tickers:
