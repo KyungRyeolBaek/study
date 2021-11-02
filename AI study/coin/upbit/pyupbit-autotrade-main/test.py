@@ -19,6 +19,7 @@ from tensorflow.keras.layers import Dense, BatchNormalization, Conv2D, MaxPoolin
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 
+<<<<<<< Updated upstream
 # Ture가 나와야 GPU가 작동 되는 중 !
 from tensorflow.python.client import device_lib 
 device_lib.list_local_devices() 
@@ -27,6 +28,10 @@ tf.test.is_gpu_available()
 ## 개인정보 관리 주의 -----------------------------------------------##
 access = "naahaVSh29BJPu3pfBZPEWSyjsGwytkYiexmAuHR"
 secret = "e0fJfTu1BjPnn35Qc2pAOheSn7xCOXIMxG0Dzluj"
+=======
+access = "fqrmAq1mNy7tSeRYHy7ZOYXcEKqcWm9KcHCh8y6X"
+secret = "LrmFrIUqve88d3yCF1W8n9KGEZ3rP0GYxb5EMjlT"
+>>>>>>> Stashed changes
 myToken = "xoxb-1995417427669-2004663172180-7lt6OQoJLd2U5hbnMg8pirL9"
 ##-------------------------------------------------------------------##
 
@@ -130,6 +135,7 @@ while True:
     # 시작 금액 갱신
     tmp['start'] = upbit.get_balance('KRW')
 
+<<<<<<< Updated upstream
     buy_list = buy_coin_list()
     print(buy_list)
 
@@ -142,3 +148,20 @@ while True:
   except Exception as e:
     print(e)
     time.sleep(1)
+=======
+
+# tickers = pyupbit.get_tickers(fiat = 'KRW')
+# print(tickers)
+
+df = pyupbit.get_ohlcv("KRW-BTC")
+print(df)
+
+n = len(pyupbit.get_orderbook(coin_name)['orderbook_units'])
+tmp = pyupbit.get_orderbook(coin_name)['orderbook_units']
+ask = [(tmp[i]['ask_size'], tmp[i]['bid_size']) for i in range(n)]
+# bid = [pyupbit.get_orderbook(coin_name)['orderbook_units'][i]['bid_size'] for i in range(14)]
+print('매수잔량', ask)
+# print('매도잔량', bid)
+# print(pyupbit.get_orderbook(coin_name)['orderbook_units'][14]['bid_size'])
+
+>>>>>>> Stashed changes
