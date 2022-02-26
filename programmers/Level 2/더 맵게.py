@@ -18,6 +18,7 @@ def solution(scoville, K):
 
 # 메모
 # 힙 : heapq 사용법 숙지
+# https://www.notion.so/Python-heapq-623e6d494f264c449e05f1a647ef8c31
 # 반복문 탈출 조건 정하기.
 
 
