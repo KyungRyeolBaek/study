@@ -14,7 +14,7 @@ def solution(maps):
     
     queue = deque([start_node])
     while queue:
-        x, y = queue.pop()
+        x, y = queue.popleft()
         for i, j in [(0, 1), (0, -1), (1, 0), (-1, 0)]:     # 동서남북, 방향별 체크
             n_x, n_y = x + i, y + j
             if 0 <= n_x < n and 0 <= n_y < m:       # 방향 범위 안넘게 주의
@@ -25,7 +25,7 @@ def solution(maps):
     return visited[-1][-1]
 
 ### 메모
-# BFS 사용, deque 이용 해서 리스트보다 빠름 : https://www.notion.so/N533-BFS-DFS-0a882d12f04f4ec59d6cfe17cd65cbca?showMoveTo=true
+# BFS 사용, deque 이용 해서 리스트보다 빠름, pop(0) 대신 popleft(), appendleft()도 가능 : https://www.notion.so/N533-BFS-DFS-0a882d12f04f4ec59d6cfe17cd65cbca?showMoveTo=true
 
 
 
