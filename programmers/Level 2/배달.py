@@ -1,16 +1,24 @@
-def dfs_recur(node, graph, dfs_list = [], distance = []):
-    if node not in dfs_list:
-        dfs_list.append(node)
-        print(node, graph[node])
-        for x in graph[node]:
-            print(x)
-            if x in dfs_list:
-                dfs_recur(x, graph, dfs_list, distance)
-            else:
-                distance.append(graph[node][x])
-                dfs_recur(x, graph, dfs_list, distance)
+import heapq
+import sys
 
-    return dfs_list, distance
+def dijkstra(start, graph):
+    distances = {node: sys.maxsize for node in graph}
+    distances[start] = 0    
+    queue = []  
+    heapq.heappush(queue, (distances[start], start))
+
+    while queue:    
+        current_distance, node = heapq.heappop(queue)   
+        if distances[node] < current_distance:  
+            continue
+
+        for adjacency_node, distance in graph[node].items():    
+            weighted_distance = current_distance + distance     
+            if weighted_distance < distances[adjacency_node]:   
+                distances[adjacency_node] = weighted_distance   
+                heapq.heappush(queue, (weighted_distance, adjacency_node))
+
+    return distances
 
 def solution(N, road, K):
     answer = 0
@@ -20,14 +28,23 @@ def solution(N, road, K):
             graph[a] = {}
         if b not in graph.keys():
             graph[b] = {}
-        graph[a][b] = d
-        graph[b][a] = d
-    print(graph)
-    print(dfs_recur(1, graph))
-    
-
+        try:
+            if graph[a][b] > d or graph[b][a] > d:
+                graph[a][b] = d
+                graph[b][a] = d
+            else:
+                pass
+        except:
+            graph[a][b] = d
+            graph[b][a] = d
+        
+    distance = dijkstra(1, graph)
+    for node, dis in distance.items():
+        if dis <= K:
+            answer += 1
+            
     return answer
-
+    
 
 # 배달
 # 문제 설명
