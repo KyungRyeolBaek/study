@@ -44,7 +44,11 @@ def solution(N, road, K):
             answer += 1
             
     return answer
-    
+
+### 메모
+# 다익스트라 알고리즘 : [https://www.notion.so/Python-dijkstra-heapq-17bf456a916e4e9f9ed6458d3ed49158](https://www.notion.so/Python-dijkstra-heapq-17bf456a916e4e9f9ed6458d3ed49158)
+
+
 
 # 배달
 # 문제 설명
