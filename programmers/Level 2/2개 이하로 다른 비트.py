@@ -17,6 +17,7 @@ def solution(numbers):
 # 이진수 0b 지우기 : [https://www.notion.so/2-0b-bc68459ae4bc4324946b8f8c7d50a500?showMoveTo=true](https://www.notion.so/2-0b-bc68459ae4bc4324946b8f8c7d50a500)
 
 
+
 # 2개 이하로 다른 비트
 # 문제 설명
 # 양의 정수 x에 대한 함수 f(x)를 다음과 같이 정의합니다.
