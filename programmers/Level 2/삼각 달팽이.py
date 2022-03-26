@@ -20,7 +20,7 @@ def solution(n):
                 answer[n-right_idx-1-j][-up_idx-1] = num
                 num += 1
             up_idx += 1
-    return [n for l in answer for n in l]
+    return sum(answer, [])
 
 ### 메모
 # list comprehension : [https://www.notion.so/Python-2-1-itertools-ec2f1c9244e14c6d9a4bcbbbbeacf24f](https://www.notion.so/Python-2-1-itertools-ec2f1c9244e14c6d9a4bcbbbbeacf24f)
