@@ -16,7 +16,14 @@ def solution(n, words):
 # 몫, 나머지 구하기 : [https://www.notion.so/divmod-1149438fb762494bb9121ab5b2af3e97](https://www.notion.so/divmod-1149438fb762494bb9121ab5b2af3e97)
 # enumerate : [https://www.notion.so/Python-enumerate-6ae496d132c74d499f66595399224b6d](https://www.notion.so/Python-enumerate-6ae496d132c74d499f66595399224b6d)
 
-
+### 다른 풀이
+def solution(n, words):
+    for p in range(1, len(words)):
+        if words[p][0] != words[p-1][-1] or words[p] in words[:p]: 
+            return [i+1 for i in divmod(p, n)][::-1]
+    else:
+        return [0,0]
+        
 
 # 영어 끝말잇기
 # 문제 설명
