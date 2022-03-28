@@ -12,6 +12,12 @@ def solution(prices):
     return answer
 
 
+### 메모
+# 끝까지 가격이 안내렸을 때를 베이스로 깔고, stack의 마지막 가격보다 낮은 가격이 나오면 해당 위치 answer 수정. - stack 사용
+# collections deque : [https://www.notion.so/Deque-pop-push-64372aac99ea4b4a83b5feb6f61f70ec?showMoveTo=true](https://www.notion.so/Deque-pop-push-64372aac99ea4b4a83b5feb6f61f70ec)
+# enumerate : [https://www.notion.so/Python-enumerate-6ae496d132c74d499f66595399224b6d](https://www.notion.so/Python-enumerate-6ae496d132c74d499f66595399224b6d)
+
+
 
 # 주식가격
 # 문제 설명
