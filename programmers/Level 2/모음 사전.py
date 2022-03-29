@@ -17,6 +17,11 @@ def solution(word):
 # 정렬하고 index 찾아서 그 값에 +1
 # itertools permutations 순열 : [https://www.notion.so/Python-product-itertools-1311c62b2ea94dd6b395471f37033fc8?showMoveTo=true](https://www.notion.so/Python-product-itertools-1311c62b2ea94dd6b395471f37033fc8)
 
+### 다른 풀이
+from itertools import product
+
+solution = lambda word: sorted(["".join(c) for i in range(5) for c in product("AEIOU", repeat=i+1)]).index(word) + 1
+
 
 
 # 모음 사전
