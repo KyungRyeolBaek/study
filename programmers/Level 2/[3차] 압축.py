@@ -26,10 +26,11 @@ def solution(msg):
             answer.append(tmp)
             
     return answer
-    
+
 
 ### 메모
 # string ascii_uppercase 알파벳 리스트 나열 : [https://www.notion.so/Python-19a797d0ca444543b85bff3bebf945b7](https://www.notion.so/Python-19a797d0ca444543b85bff3bebf945b7)
+
 
 
 
