@@ -61,6 +61,7 @@ def solution(n, info):
 
 
 
+ 
 # 양궁대회
 # 문제 설명
 # 문제 설명
