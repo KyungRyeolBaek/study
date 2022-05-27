@@ -1,3 +1,46 @@
+def solution(lottos, win_nums):
+
+    rank=[6,6,5,4,3,2,1]
+
+    cnt_0 = lottos.count(0)
+    ans = 0
+    for x in win_nums:
+        if x in lottos:
+            ans += 1
+    return rank[cnt_0 + ans],rank[ans]
+
+# list.count(a) : a의 개수 
+# 순위 리스트에 넣고 리턴.
+
+
+# def solution(lottos, win_nums):
+#     # 낙서된 번호와 로또 번호 구분
+#     noise_count = 0
+#     _lottos = []
+#     for number in lottos:
+#         if number == 0:
+#             noise_count += 1
+#         else:
+#             _lottos.append(number)
+    
+#     # 당첨 번호 확인
+#     win_count = 0
+#     for number in _lottos:
+#         if number in win_nums:
+#             win_count += 1
+    
+#     # 당첨 결과
+#     if win_count >= 2:
+#         answer = [7 - win_count - noise_count, 7 - win_count]
+#     elif win_count == 1:
+#         answer = [7 - win_count - noise_count, 6]
+#     else: 
+#         if noise_count >= 2:
+#             answer = [7 - noise_count, 6]
+#         else:
+#             answer = [6, 6]
+            
+#     return answer
 
 
 # 로또의 최고 순위와 최저 순위
