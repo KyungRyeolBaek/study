@@ -13,7 +13,7 @@ def solution(gems):
     for start in range(n):
         while end < n and len(gem_dic) < m:
             if gems[end] in gem_dic:
-                gem_dic[gems[end]] += 1
+                gem_dic[gems[end]] += 1 
             else:
                 gem_dic[gems[end]] = 1
             gem_list.append(gems[end])
