@@ -1,0 +1,85 @@
+c1. 선형, stiff & non stiff  / y(x) = exp(-x)
+결과1. p차 poly근사(p=1,2,3)와 그들의 오차
+결과2. error corrected PINN based on p차 poly(ECPINNp) vs. PINN 오차비교
+         (ECPINN이 1,2,3차가 다 있어야 할 것 같습니다.)
+         (학습횟수가 증가 할 수록 PINN goes to ECPINNp)
+         (ECPINNp의 정확도가 p에 크게 의존하지 않는다)
+         (학습량에 제한을 둘 경우 p에 의존한다  --> test 필요)
+
+c2. 비선형, nonstiff / y(x) = -1/(1-x)
+
+c3. 선형, stiff & nonstiff / y(x) = sin(x)
+
+c4. 선형, system, nonstiff / Hamiltonian
+
+
+
+
+
+ECPINN
+ㄴ based on taylor poly(ECPINN-T) : 적당한 정의역을 벗어나면 error 급격하게 커짐 = conv. region에 제한
+ㄴ based on learned poly(ECPINN-L)  : 정의역에 상관없이 error의 blow up이 없음
+
+PINN
+
+1. TP vs. LP (당연히 LP가 더 좋아요. 특히 long time simulation의 경우)
+2. ECPINN-T vs. ECPINN-L (이건 누가 좋을지 모르겠어요)
+3. ECPINN-L vs. PINN (ECPINN이 더 좋음)
+
+각 비교항목에서 학습횟수에 대한 의존도 확인
+
+기반되는 근사가 정확하면 최종결과에 좋은 영향을 미치는가??????
+-> polynomial의 order OR TP/LP
+-> YES!
+
+
+
+c1 에서 
+TPp vs. LPp (p = 1,2,3) --->
+[그림1-1] time[0,1] vs. solution (Exact(k) vs. TP1(r) vs. LP1(b)) for solution
+[그림1-2] time[0,1] vs. solution (Exact(k) vs. TP2(r) vs. LP2(b)) for solution
+[그림1-3] time[0,1] vs. solution (Exact(k) vs. TP3(r) vs. LP3(b)) for solution
+-----> 1x3 배열로 넣을것임
+
+[그림2] time vs. error on [0,1] 세로 축은 absolute error
+-> 차수별로 따로.  1x3 배열
+     LP도 잘된다. uniform한 error 분포임을 어필, 더 좋다
+
+
+
+c2 에서
+TPp vs. LPp (p = 1,2,3) with long-time simulation
+[그림1-1,2,3] time vs. solution  on [0,결과따라]
+[그림2-1,2,3] time vs. error on [0,결과따라] 세로 축은 log10(absolute error)
+1x3 배열 2개
+polynomial 근사 에서 long-time simulation에 적합함을 어필
+
+ECPINN-T vs. ECPINN-L
+위랑 똑같은 그림 
+1x3 배열 2개
+polynomial 근사 잘한게 ECPINN에 미치는 영향을 어필(poly의 정확도가 높으면 결과도 좋음)
+
+
+
+c3 에서
+with ECPINN-L
+stiffness  = -1, -1000 
+지금이랑 똑같은 그림 1,2,3차 모두 다 [0,1]로만 하면 굿
+polynomial의 차수가 ECPINN에 미치는 영향을 어필(poly의 정확도가 높으면 결과도 좋음)
+
+
+c4 에서
+with ECPINN-L
+지금이랑 똑같은데 1번째랑 3번째만. 정의역은 [0, 2pi]
+추가 그림 시간에 따른 오차 벡터의 L2-norm
+그럼 1x3 그림이 2개
+   ㄴ LP 3개를 비교하는 그림 3개
+   ㄴ ECPINN-L vs PINN (총4개)를 비교하는 그림 3개
+
+
+
+
+공통. train data는 표기x
+        soluttion 그릴때, exact를 점선으로, 결과값들을 실선
+        data 저장 해 주세요 엑셀로
+
