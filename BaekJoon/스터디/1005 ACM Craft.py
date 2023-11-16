@@ -1,4 +1,42 @@
+import sys
+from collections import deque
 
+
+input = sys.stdin.readline
+
+
+# T: 테스트 케이스
+# N, K: 건물 개수, 건물 순서 규칙 총 개수
+T = int(input())
+for _ in range(T):
+    N, K = map(int, input().strip().split())
+    D = list(map(int, input().strip().split()))
+    G = [list(map(int, input().strip().split())) for _ in range(K)]
+    W = int(input())
+    print(N, K, D, G, W)
+    graph = {n + 1: [] for n in range(N)}
+    reversed_graph = {n + 1: [] for n in range(N)}
+    for g in G:
+        graph[g[0]].append(g[1])
+        reversed_graph[g[1]].append(g[0])
+    print(graph)
+    print(reversed_graph)
+
+    time = 0
+    while True:
+        remove_list = [k for k, v in reversed_graph.items() if v == []]
+        for remove_data in remove_list:
+            time += D[remove_data - 1]
+            if remove_data == W:
+                break
+            del reversed_graph[remove_data]
+            for find_key in graph[remove_data]:
+                reversed_graph[find_key].remove(remove_data)
+        print(reversed_graph)
+        if time >= 120:
+            break
+
+    print(time)
 
 
 # # ACM Craft

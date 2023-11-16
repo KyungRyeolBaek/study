@@ -6,7 +6,7 @@ def fibonacci(n):
 
 
 n = int(sys.stdin.readline())
-datas = [int(sys.stdin.readline().strip()) for _ in range(n)]    
+datas = [int(sys.stdin.readline().strip()) for _ in range(n)]
 
 for data in datas:
     result = [fibonacci(abs(data - 1)), fibonacci(data)]
