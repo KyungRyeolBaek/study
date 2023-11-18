@@ -1,6 +1,22 @@
 import sys
 from collections import deque
 
+# '''
+# 0. 받은 시간을 소요된 시간에 넣는다.
+# 1. que에 다음 진행할 건물 번호를 넣는다.
+#     1-1. 다음 진행할 건물 번호가 없으면 패스.
+# 2. 소요된 시간의 최대값이랑 필요한 시간을 더해서 다음 번호로 넘긴다.
+# '''
+# def DFS(graph, building_num, que=deque([])):
+#     if building_num not in que:
+#         que.append(building_num)
+#         building_num = que.pop()
+#             building_dict = graph[building_num]
+#             for next_building in building_dict['next_building']:
+#                 que.append(next_building)
+#                 building_dict['require_time']
+
+
 
 input = sys.stdin.readline
 
@@ -14,29 +30,69 @@ for _ in range(T):
     G = [list(map(int, input().strip().split())) for _ in range(K)]
     W = int(input())
     print(N, K, D, G, W)
-    graph = {n + 1: [] for n in range(N)}
-    reversed_graph = {n + 1: [] for n in range(N)}
+    graph = {n + 1: {'next_building': [], 'require_building': {}, 'require_time': time, 'spended_time': [], 'status': 0} for n, time in zip(range(N), D)}
     for g in G:
-        graph[g[0]].append(g[1])
-        reversed_graph[g[1]].append(g[0])
+        # 다음 건물
+        graph[g[0]]['next_building'].append(g[1])
+        # 건물이 건설되면 1로 바꿔줌.
+        graph[g[1]]['require_building'][g[0]] = 0
     print(graph)
-    print(reversed_graph)
 
-    time = 0
+    '''
+    graph
+    {1: {'next_building': [2, 3], 
+         'require_building': {}, 
+         'require_time': 10, 
+         'spend_time': 0,
+         'status': 0}, 
+     2: {'next_building': [4], 
+         'require_building': {1: 0}, 
+         'require_time': 1, 
+         'spend_time': 0,
+         'status': 0}, 
+     3: {'next_building': [4], 
+         'require_building': {1: 0}, 
+         'require_time': 100, 
+         'spend_time': 0,
+         'status': 0}, 
+     4: {'next_building': [], 
+         'require_building': {2: 0, 3: 0},
+         'require_time': 10, 
+         'spend_time': 0,
+         'status': 0}}
+    '''
+
+    building_num = 1
+    que = deque([])
+    building_dict = graph[building_num]
+    for next_building in building_dict['next_building']:
+        que.append()
     while True:
-        remove_list = [k for k, v in reversed_graph.items() if v == []]
-        for remove_data in remove_list:
-            time += D[remove_data - 1]
-            if remove_data == W:
-                break
-            del reversed_graph[remove_data]
-            for find_key in graph[remove_data]:
-                reversed_graph[find_key].remove(remove_data)
-        print(reversed_graph)
-        if time >= 120:
-            break
+        building_dict = graph[building_num]
+        if len(building_dict['require_building']):
 
-    print(time)
+
+    # time = 0
+    # while True:
+    #     remove_list = [k for k, v in reversed_graph.items() if v == []]
+    #     # remove_list 가 1개 일 때 그냥 시간 늘리면 됨.
+    #     if len(remove_list) == 1:
+    #         for remove_data in remove_list:
+    #             time += D[remove_data - 1]
+    #             if remove_data == W:
+    #                 break
+    #             del reversed_graph[remove_data]
+    #             for find_key in graph[remove_data]:
+    #                 reversed_graph[find_key].remove(remove_data)
+    #     # 2개 이상일 경우엔
+    #     else:
+
+        
+    #     print(reversed_graph)
+    #     if time >= 120:
+            # break
+
+    # print(time)
 
 
 # # ACM Craft
