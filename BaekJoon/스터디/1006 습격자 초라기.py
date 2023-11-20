@@ -14,12 +14,27 @@ def min_special_forces(N, W, enemies):
 
     return total_forces
 
+import sys
+
+
+input = sys.stdin.readline
+
+
 # 테스트 케이스 입력
 T = int(input())
 for _ in range(T):
     N, W = map(int, input().strip().split())
     enemies1 = list(map(int, input().strip().split()))
     enemies2 = list(map(int, input().strip().split()))
+
+    '''
+    최소로 이뤄질수 있는 쌍
+    위아래로 N개만큼 이뤄질 수 있음
+    min = N
+    여기서 경우가 나뉨
+    양 옆으로 매칭 될 경우.
+    위 아래로 매칭 될 경우.
+    '''
 
     # 두 번째 줄의 입력을 첫 번째 줄에 이어붙임
     enemies = enemies1 + enemies2
