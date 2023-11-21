@@ -24,16 +24,22 @@ for _ in range(T):
 
     time = 0
     while True:
+        removeed_que = deque([])
         remove_list = [k for k, v in reversed_graph.items() if v == []]
         for remove_data in remove_list:
+            removeed_que.append(remove_data)
             time += D[remove_data - 1]
             if remove_data == W:
                 break
             del reversed_graph[remove_data]
             for find_key in graph[remove_data]:
                 reversed_graph[find_key].remove(remove_data)
+        for removeed_index in removeed_que:
+            for started in graph[removeed_index]:
+                D[started - 1] -= D[removeed_index - 1]
         print(reversed_graph)
-        if time >= 120:
+        print(time)
+        if time >= 100:
             break
 
     print(time)
