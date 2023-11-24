@@ -14,6 +14,7 @@ def min_special_forces(N, W, enemies):
 
     return total_forces
 
+
 import sys
 
 
