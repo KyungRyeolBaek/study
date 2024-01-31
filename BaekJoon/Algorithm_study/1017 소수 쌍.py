@@ -58,6 +58,30 @@ def binary_matching(left, right):
     
     return result
 
+def binary_matching(left, right):
+    result = []
+    # 첫 번째 수와 매칭된 결과만 찾으면 됨.
+    N = len(left)
+    l_copy = left.copy()
+    start = l_copy.pop(0)
+    r_copy = right.copy()
+    for idx in range(N):
+        r_start = r_copy.pop(idx)
+        l_check, r_check = [True] * len(l_copy), [True] * len(l_copy)
+        if not is_prime(start + r_start):
+            continue
+        for l_idx, l in enumerate(l_copy):
+            for r_idx, r in enumerate(r_copy):
+                if is_prime(l + r) and l_check[l_idx] and r_check[r_idx]:
+                    l_check[l_idx] = False
+                    r_check[r_idx] = False
+                    
+
+
+
+        
+
+
 
 # 짝수 홀수 나누기.
 def even_odd(_list):
@@ -70,8 +94,8 @@ def even_odd(_list):
             left.append(num)
         else:
             right.append(num)
-    # 짝수로만 이뤄졌거나, 홀수로만 이뤄졌으면 
-    if left == [] or right == []:
+    # 짝수 홀수 개수가 같지 않으면
+    if len(left) == len(right):
         return -1
     else:
         return left, right
