@@ -86,6 +86,6 @@ print(math.ceil(day))
 - [수학](https://www.acmicpc.net/problem/tag/124)
 
 ## 메모
-
+올림 사용
 [Python 반올림, 내림, 올림](https://www.notion.so/Python-3064dbd4fa394d0cbab2c896391ca802?pvs=21)
 '''
