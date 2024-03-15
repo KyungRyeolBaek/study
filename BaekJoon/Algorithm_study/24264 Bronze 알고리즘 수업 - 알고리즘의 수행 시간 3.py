@@ -1,25 +1,26 @@
 import sys
 
 
+def MenOfPassion(n, count=0, bigO=0):
+    sum = 0
+    for i in range(1, n + 1):
+        for j in range(1, n + 1):
+            sum += i * j
+            count += 1
+    bigO += 2
+    return sum, count, bigO
+
+
 input = sys.stdin.readline
-n = int(input().strip())
-
-
-def MenOfPassion(n, count=0, O=0):
-    A = [n / 2]
-    count += 1
-    return A, count, O
-
-A, count, O = MenOfPassion(n)
-print(count)
-print(O)
+print(int(input().strip())**2)
+print(2)
 
 '''
-# 알고리즘 수업 - 알고리즘의 수행 시간 1
+# 알고리즘 수업 - 알고리즘의 수행 시간 3
 
 | 시간 제한 | 메모리 제한 | 제출 | 정답 | 맞힌 사람 | 정답 비율 |
 | --- | --- | --- | --- | --- | --- |
-| 1 초 | 512 MB | 17413 | 13141 | 12361 | 76.586% |
+| 1 초 | 512 MB | 18557 | 9561 | 9221 | 51.792% |
 
 ## 문제
 
@@ -31,8 +32,11 @@ MenOfPassion 알고리즘은 다음과 같다.
 
 ```
 MenOfPassion(A[], n) {
-    i = ⌊n / 2⌋;
-    return A[i]; # 코드1
+    sum <- 0;
+    for i <- 1 to n
+        for j <- 1 to n
+            sum <- sum + A[i] × A[j]; # 코드1
+    return sum;
 }
 ```
 
@@ -49,19 +53,19 @@ MenOfPassion(A[], n) {
 ## 예제 입력 1
 
 ```
-1
+7
 
 ```
 
 ## 예제 출력 1
 
 ```
-1
-0
+49
+2
 
 ```
 
-코드1 이 1회 수행되고 알고리즘은 상수 시간이 소요된다.
+코드1 이 49회 수행되고 알고리즘의 수행 시간이 *n2*에 비례한다.
 
 ## 출처
 
@@ -70,12 +74,12 @@ MenOfPassion(A[], n) {
 
 ## 알고리즘 분류
 
+- [수학](https://www.acmicpc.net/problem/tag/124)
 - [구현](https://www.acmicpc.net/problem/tag/102)
+- [사칙연산](https://www.acmicpc.net/problem/tag/121)
 - [시뮬레이션](https://www.acmicpc.net/problem/tag/141)
 
 ## 메모
 
-함수의 시간 복잡도 출력.
-
-[빅오 표기법, 시간복잡도](https://www.notion.so/a5f2a1e8b5b748f6b82a50d97ecc2d28?pvs=21)
+함수 실행해서 수행횟수 측정하면 시간 초과 뜸.
 '''
