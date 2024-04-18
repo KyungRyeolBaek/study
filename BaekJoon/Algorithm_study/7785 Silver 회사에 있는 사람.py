@@ -77,6 +77,5 @@ Artem
 사전순 역순 정렬
 
 dictionary 형태로 넣어야 뽑아올 때 빠름.
-
 [길이가 같으면 사전 순으로](https://www.notion.so/dc55a92363a4440eb6f2fe78cbaaab7c?pvs=21)
 '''
