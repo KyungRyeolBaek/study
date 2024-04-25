@@ -58,23 +58,23 @@ def binary_matching(left, right):
     
     return result
 
-def binary_matching(left, right):
-    result = []
-    # 첫 번째 수와 매칭된 결과만 찾으면 됨.
-    N = len(left)
-    l_copy = left.copy()
-    start = l_copy.pop(0)
-    r_copy = right.copy()
-    for idx in range(N):
-        r_start = r_copy.pop(idx)
-        l_check, r_check = [True] * len(l_copy), [True] * len(l_copy)
-        if not is_prime(start + r_start):
-            continue
-        for l_idx, l in enumerate(l_copy):
-            for r_idx, r in enumerate(r_copy):
-                if is_prime(l + r) and l_check[l_idx] and r_check[r_idx]:
-                    l_check[l_idx] = False
-                    r_check[r_idx] = False
+# def binary_matching(left, right):
+#     result = []
+#     # 첫 번째 수와 매칭된 결과만 찾으면 됨.
+#     N = len(left)
+#     l_copy = left.copy()
+#     start = l_copy.pop(0)
+#     r_copy = right.copy()
+#     for idx in range(N):
+#         r_start = r_copy.pop(idx)
+#         l_check, r_check = [True] * len(l_copy), [True] * len(l_copy)
+#         if not is_prime(start + r_start):
+#             continue
+#         for l_idx, l in enumerate(l_copy):
+#             for r_idx, r in enumerate(r_copy):
+#                 if is_prime(l + r) and l_check[l_idx] and r_check[r_idx]:
+#                     l_check[l_idx] = False
+#                     r_check[r_idx] = False
                     
 
 
@@ -94,8 +94,9 @@ def even_odd(_list):
             left.append(num)
         else:
             right.append(num)
+    print(left, right)
     # 짝수 홀수 개수가 같지 않으면
-    if len(left) == len(right):
+    if len(left) != len(right):
         return -1
     else:
         return left, right
@@ -108,40 +109,33 @@ if div_list == -1:
     print(-1)
 else:
     left, right = div_list
-    binary_matching(left, right)
+    right.sort()
+    result = set([])
+    while True:
+        status = [1 for _ in range(len(right))]
+        for a_idx, A in enumerate(left):
+            for b_idx, (B, st) in enumerate(zip(right, status)):
+                if st == 1:
+                    print(A, A + B)
+                    if a_idx == 0:
+                        if is_prime(A + B) == True and (B not in result) == True:
+                        # if a_idx == 0 and (B not in result) == True:
+                            res = B
+                            status[b_idx] = 0
+                            break
+                    if a_idx != 0:
+                        if is_prime(A + B) == True:
+                            status[b_idx] = 0
+                            break
+                        
+            print(right, status)
+            if sum(status) == len(right):
+                break
+        if sum(status) == 0:
+            result.add(res)
+        if sum(status) == len(right):
+            break
 
-
-
-
-
-
-# 리스트에서 두 요소의 합이 소수인 모든 순서쌍 찾기
-def find_prime_pairs(lst):
-    prime_pairs = []
-    for pair in itertools.combinations(lst, 2):
-        if is_prime(sum(pair)):
-            prime_pairs.append(pair)
-    return prime_pairs
-
-
-# 소수 합 순서쌍을 사용하여 전체 조합 만들기
-def create_combinations(lst):
-    first_num = lst[0]
-    combinations, done_pairs = [], []
-    prime_pairs = find_prime_pairs(lst)
-    for comb in itertools.combinations(prime_pairs, len(lst)//2):
-        flat_comb = sum(comb, ())
-        if (flat_comb[0] == first_num) and (flat_comb[1] not in done_pairs) and len(set(flat_comb)) == N:
-            combinations.append(comb)
-            done_pairs.append(flat_comb[1])
-    return done_pairs
-
-
-N = int(input().strip())
-lst = list(map(int, input().strip().split()))
-result = sorted(create_combinations(lst))
-if result:
-    print(' '.join(map(str, result)))
-else:
-    print(-1)
+    print(result)
+    
 
