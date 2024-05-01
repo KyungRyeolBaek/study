@@ -15,13 +15,20 @@ def is_prime_number(x):
 
 
 input = sys.stdin.readline
+prime_dict = {}
+for num in range(2*123456 + 1):
+    if is_prime_number(num):
+        prime_dict[num] = True
+    else:
+        prime_dict[num] = False
+
 while True:
     n = int(input())
     if n == 0:
         break
     count = 0
     for num in range(n + 1, 2*n + 1):
-        if is_prime_number(num):
+        if prime_dict[num]:
             count += 1
     print(count)
 
