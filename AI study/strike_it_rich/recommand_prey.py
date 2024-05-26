@@ -1,7 +1,5 @@
 from pykrx import stock
-# import pandas as pd
 from datetime import datetime, timedelta
-
 
 # 1. 코스피 200 지수의 구성 종목 리스트 구하기
 print('Starting Step 1')
@@ -15,39 +13,27 @@ start_date = (datetime.today() - timedelta(days=365)).strftime("%Y%m%d")  # 1년
 ohlcv_data = {}
 fundamental_data = {}
 for code in kospi200:
-    ohlcv_data[code] = stock.get_market_ohlcv_by_date(start_date, end_date, code)
     fundamental_data[code] = stock.get_market_fundamental_by_date(start_date, end_date, code)
-
-# 3. PER과 DIV를 기준으로 추천 종목 고르기
-print('Starting Step 3')
-recommended_stocks = []
-for code in kospi200:
-    df = fundamental_data[code]
-    if not df.empty:
+    if not fundamental_data[code].empty:
         # PER과 DIV 조건에 맞는지 확인 (예: PER < 10, DIV > 2%)
-        if df['PER'].mean() > 10 and df['DIV'].mean() > 2:
-            recommended_stocks.append(code)
+        if fundamental_data[code]['PER'].mean() < 10 and fundamental_data[code]['DIV'].mean() > 2:
+            ohlcv_data[code] = stock.get_market_ohlcv_by_date(start_date, end_date, code)
 
-# 4. 이동평균선과 5. 볼린저 밴드 계산
-print('Starting Step 4')
+# 3. 추천 종목 리스트에서 추가 조건 확인 및 이동평균선, 볼린저 밴드 계산
+print('Starting Step 3 and 4')
 final_selected_stocks = []
-for code in recommended_stocks:
-    df = ohlcv_data[code]
-
-    # 이동평균선 계산
+for code, df in ohlcv_data.items():
     df['MA5'] = df['종가'].rolling(window=5).mean()
     df['MA20'] = df['종가'].rolling(window=20).mean()
     df['MA60'] = df['종가'].rolling(window=60).mean()
 
-    # 볼린저 밴드 계산
-    df['Middle Band'] = df['종가'].rolling(window=20).mean()
+    df['Middle Band'] = df['MA20']  # 중간 볼린저 밴드는 20일 이동평균선
     df['Upper Band'] = df['Middle Band'] + 2 * df['종가'].rolling(window=20).std()
     df['Lower Band'] = df['Middle Band'] - 2 * df['종가'].rolling(window=20).std()
 
-    # 이동평균선 정배열 및 볼린저 밴드 조건 확인
-    if df['MA5'][-1] > df['MA20'][-1] > df['MA60'][-1] and \
-       df['종가'][-1] < df['Middle Band'][-1] and \
-       df['종가'][-1] > df['Lower Band'][-1]:
+    if df['MA5'].iloc[-1] > df['MA20'].iloc[-1] > df['MA60'].iloc[-1] and \
+       df['종가'].iloc[-1] < df['Middle Band'].iloc[-1] and \
+       df['종가'].iloc[-1] > df['Lower Band'].iloc[-1]:
         final_selected_stocks.append(code)
 
 # 6. 최종 종목 리스트 출력
