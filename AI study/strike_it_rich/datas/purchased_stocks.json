@@ -1,0 +1,37 @@
+[
+    {
+        "code": "010950",
+        "purchase_price": 68200.0,
+        "purchase_time": "2024-06-02 23:21:10"
+    },
+    {
+        "code": "003490",
+        "purchase_price": 20850.0,
+        "purchase_time": "2024-06-02 23:21:13"
+    },
+    {
+        "code": "086280",
+        "purchase_price": 179500.0,
+        "purchase_time": "2024-06-02 23:21:16"
+    },
+    {
+        "code": "078930",
+        "purchase_price": 43600.0,
+        "purchase_time": "2024-06-02 23:21:19"
+    },
+    {
+        "code": "010060",
+        "purchase_price": 96900.0,
+        "purchase_time": "2024-06-02 23:21:21"
+    },
+    {
+        "code": "111770",
+        "purchase_price": 33950.0,
+        "purchase_time": "2024-06-02 23:21:24"
+    },
+    {
+        "code": "137310",
+        "purchase_price": 10040.0,
+        "purchase_time": "2024-06-02 23:21:27"
+    }
+]

@@ -9,19 +9,24 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 # 파일 경로
-cache_file = 'stock_data_cache.pkl'
-kospi200_cache = 'kospi200.pkl'
+base_path = os.path.dirname(os.path.abspath(__file__))
+data_path = os.path.join(base_path, 'datas')
+cache_file = os.path.join(data_path, 'stock_data_cache.pkl')
+kospi200_cache = os.path.join(data_path, 'kospi200.pkl')
 
 # 글로벌 변수로 그래프 캔버스 설정
 graph_canvases = {}
+
 
 def long_running_task(callback, per_threshold, div_threshold, ma_windows):
     result = fetch_and_process_stocks(per_threshold, div_threshold, ma_windows)
     callback(result)
 
+
 def save_to_cache(data, settings):
     with open(cache_file, 'wb') as f:
         pickle.dump((data, settings), f)
+
 
 def load_from_cache(settings):
     if os.path.exists(cache_file):
@@ -31,9 +36,11 @@ def load_from_cache(settings):
                 return cached_data
     return None
 
+
 def save_kospi200_to_cache(kospi200, date):
     with open(kospi200_cache, 'wb') as f:
         pickle.dump((kospi200, date), f)
+
 
 def load_kospi200_from_cache():
     if os.path.exists(kospi200_cache):
@@ -43,6 +50,7 @@ def load_kospi200_from_cache():
             if cached_date == current_date:
                 return kospi200
     return None
+
 
 def fetch_kospi200(use_cache=True):
     current_date = datetime.today().strftime("%Y%m%d")
@@ -54,6 +62,7 @@ def fetch_kospi200(use_cache=True):
     kospi200 = stock.get_index_portfolio_deposit_file("1028")
     save_kospi200_to_cache(kospi200, current_date)
     return kospi200
+
 
 def fetch_and_process_stocks(per_threshold, div_threshold, ma_windows, use_cache=True):
     settings = (per_threshold, div_threshold, tuple(ma_windows))
@@ -90,6 +99,7 @@ def fetch_and_process_stocks(per_threshold, div_threshold, ma_windows, use_cache
     save_to_cache(final_stock_names, settings)
     return final_stock_names
 
+
 def show_stock_graph(stock_code, root):
     global graph_canvases
     end_date = datetime.today().strftime("%Y%m%d")
@@ -106,6 +116,7 @@ def show_stock_graph(stock_code, root):
     canvas = FigureCanvasTkAgg(figure, graph_window)
     canvas.draw()
     canvas.get_tk_widget().pack()
+
 
 def setup():
     global root
@@ -156,6 +167,7 @@ def setup():
     submit_button.pack()
 
     root.mainloop()
+
 
 if __name__ == "__main__":
     setup()
