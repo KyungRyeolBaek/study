@@ -1,4 +1,5 @@
 import sys
+from collections import deque
 
 
 input = sys.stdin.readline
@@ -9,13 +10,10 @@ M = int(input())
 C = list(map(int, input().strip().split()))
 
 result = []
+que = deque([b for a, b in zip(A, B) if a == 0])
 for c in C:
-    save = c
-    for idx, (a, b) in enumerate(zip(A, B)):
-        if a == 0:
-            B[idx] = save
-            save = b
-    result.append(str(save))
+    que.appendleft(c)
+    result.append(str(que.pop()))
 print(' '.join(result))
 
 '''
@@ -179,4 +177,10 @@ M 개의 C 가 주어지는데
 B의 길이만큼 큐이면 해당 idx에 값을 넣고 넣어져 있던 값을 리턴함.
 
 스텍이면 넣고 그 값을 그대로 빼기 때문에 그냥 패스하면 됨.
+
+- 위 방법대로 하면 시간 초과 뜸.
+
+일단 que인 값들만 뽑아오고
+
+c를 받아 앞에 넣고 que 마지막 값 뽑아서 result에 넣어야함.
 '''
