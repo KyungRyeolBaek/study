@@ -7,17 +7,22 @@ def gcd(x, y):
     return x
 
 
-def lcm(x, y):
-	return x * y // gcd(x, y)
-
-
 input = sys.stdin.readline
 N = input()
 A = list(map(int, input().strip().split()))
-s = A.pop()
-for a in A:
-    s = lcm(s, a)
-print(s)
+s = A[-1]
+min_num = s
+for a in A[:-1]:
+    num = gcd(s, a)
+    if num < min_num:
+        min_num = num
+    s = s * a // num
+if len(A) == 0:
+    print(s**2)
+elif s in A:
+    print(s * min_num)
+else:
+    print(s)
 
 '''
 # 약수
