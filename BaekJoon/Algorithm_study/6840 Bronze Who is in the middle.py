@@ -42,10 +42,3 @@ In the story Goldilocks and the Three Bears, each bear had a bowl of porridge to
 
 ## 메모
 '''
-git checkout -B 6840
-git add .
-git commit -m '6840: Who is in the middle'
-git push origin 6840
-git checkout main
-git branch -D 6840
-git pull origin main
